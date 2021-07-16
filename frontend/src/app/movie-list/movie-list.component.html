@@ -1,0 +1,7 @@
+<div class="list">
+    <article *ngFor="let mov of movies">
+          <div class="list1" (click)="performerList(mov._id)">{{mov.name}}
+          </div>
+          <button class="btn" (click)="updateMovie(mov._id)">Change</button>
+    </article>
+ </div>

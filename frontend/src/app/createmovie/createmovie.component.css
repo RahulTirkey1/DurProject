@@ -1,0 +1,29 @@
+.element1
+{
+    font-size: x-large;
+}
+.element{
+    margin-top:20px;
+}
+.element2
+{
+    font-size: larger;
+}
+.element3
+{
+    width:250px;
+    height:70px;
+    font-size: larger;
+}
+.add
+{
+    background-color: tomato;
+    font-size: larger;
+    color:white;
+    cursor: pointer;
+}
+.validationError
+{
+    color:red;
+    font-size: large;
+}

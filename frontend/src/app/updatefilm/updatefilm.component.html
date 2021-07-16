@@ -1,0 +1,53 @@
+<button (click)="home()">Home</button>
+<form [formGroup]="updateMovieForm" *ngIf="updateMovieForm" (ngSubmit)="readyChange(updateMovieForm)">
+    <div class="element">
+        <label class="element1">Name :</label>
+        <input class="element2" type="text" formControlName="name">
+               <div *ngIf="name.invalid && (name.dirty || name.touched)" class="validationError">
+                   <div *ngIf="name.errors.required">
+                       Name of the Movie is Required
+                   </div>
+                   <div *ngIf="name.errors.cannotContainSpace">
+                       Spaces at the start or end is not allowed
+                   </div>
+                </div>
+    </div>
+    <div class="element">
+        <label class="element1">Description :</label>
+        <textarea class="element3" formControlName="description"></textarea>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="validationError">
+                    <div *ngIf="description.errors.required">
+                        Description of the Movie is Required
+                    </div>
+                    <div *ngIf="description.errors.cannotContainSpace">
+                        Spaces at the start or end is not allowed
+                    </div>
+                </div>
+    </div>  
+    <button type="button" (click)="addPersons()">Add Actor</button>
+      <div class="element">
+        <div formArrayName="actor" *ngFor="let act of actor.controls;let i=index">
+            <label class="element1">Actor {{i+1}} </label>
+            <input type="text" class="element2" [formControlName]=i>
+            <button type="button" (click)="removeActor(i)">Delete Actor</button>
+                       <div *ngIf="actor.get([i]).invalid && (actor.get([i]).dirty || actor.get([i]).touched)" class="validationError">
+                           <div *ngIf="actor.get([i]).errors.required">
+                               Name of the Actor is required.
+                           </div>
+                           <div *ngIf="actor.get([i]).errors.cannotContainSpace">
+                            Spaces at the start or end is not allowed
+                           </div>
+            </div>
+           
+        </div>
+    </div>       
+ <!--       <span formArrayName ="actor" span *ngFor="let actor of movie.actor;let i=index">
+                <input type="text" [formControlName]="i">
+        </span>  -->     
+       <button type="submit" [disabled]="!updateMovieForm.valid">Update</button>       
+</form>
+<button type="button" (click)="deleteMovie()">Delete Movie</button>
+
+
+<!-- {{updateMovieForm.value | json}}
+{{updateActorsForm.value |json}}  -->

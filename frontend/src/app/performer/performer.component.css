@@ -1,0 +1,16 @@
+.grid
+{
+    display:flex;   
+    flex-wrap: wrap; 
+    width:60%;
+    margin:0 auto;
+}
+.grid > div {
+    margin-right:80px;
+  }
+  .m
+  {
+      background-color: tomato;
+      color:white;
+      font-size: x-large;
+  }

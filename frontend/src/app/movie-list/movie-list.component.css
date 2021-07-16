@@ -1,0 +1,25 @@
+.list
+{
+    display:grid;
+    grid-template-columns: repeat(2,4fr);
+    grid-gap:2rem;
+    
+}
+.list1
+{
+    background-color: #a52a2a;
+    color:white;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    width:350px;
+    height:125px;
+    font-size: xx-large;
+    cursor: pointer;
+}
+.btn
+{
+    color:white;
+    background-color: tomato;
+    font-size: x-large;
+}

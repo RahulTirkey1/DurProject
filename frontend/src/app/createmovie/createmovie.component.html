@@ -1,0 +1,46 @@
+<button (click)="home()">Home</button>
+<form [formGroup]="createForm" *ngIf="createForm" (ngSubmit)="addFilm(createForm)">
+    <div class="element">
+           <label class="element1">Name :</label>
+           <input class="element2" type="text" formControlName="name">
+           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="validationError">
+                 <div *ngIf="name.errors.required">
+                     Name of the Movie is Required
+                 </div>
+                 <div *ngIf="name.errors.cannotContainSpace">
+                     Spaces at the start or end is not allowed
+                 </div>
+           </div>
+    </div>
+    <div class="element">
+        <label class="element1">Description :</label>
+        <textarea class="element3" formControlName="description"></textarea>
+        <div *ngIf="description.invalid && (description.dirty || description.touched)" class="validationError">
+            <div *ngIf="description.errors.required">
+                Description of the Movie is Required
+            </div>
+            <div *ngIf="description.errors.cannotContainSpace">
+                Spaces at the start or end is not allowed
+            </div>
+        </div>
+    </div>
+    
+    <button type="button" class="add" (click)="addOtherActors()">Add Actors</button> &nbsp; &nbsp;&nbsp;&nbsp;
+    
+    <div class="element">
+        <div formArrayName="actor" *ngFor="let act of actor.controls; let i=index">
+            <label class="element1">Actor:</label>
+            <input class="element2" type="text" [formControlName]="i">
+            <button type="button" (click)="removeActor(i)">Delete Actor</button>
+            <div *ngIf="actor.get([i]).invalid && (actor.get([i]).dirty || actor.get([i]).touched)" class="validationError">
+                <div *ngIf="actor.get([i]).errors.required">
+                    Name of the Actor is required.
+                </div>
+                <div *ngIf="actor.get([i]).errors.cannotContainSpace">
+                 Spaces at the start or end is not allowed
+                </div>
+               </div>
+          </div>
+    </div>
+    <button type="submit" [disabled]="!createForm.valid" >Add Movie</button>
+</form>
